@@ -1,11 +1,15 @@
 package com.softchin.obrasocialpp.ui.components
 
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.BottomNavigation
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.BottomNavigationItem
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
@@ -15,7 +19,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
-fun CusttomBottomAppBar(bottomNavController: NavController) {
+fun CustomBottomAppBar(bottomNavController: NavController) {
 
     val screens = listOf(Screen.HomeScreen, Screen.HealthScreen)
 
@@ -37,6 +41,9 @@ fun CusttomBottomAppBar(bottomNavController: NavController) {
 
                         is Screen.HealthScreen -> {
                             Icon(Icons.Outlined.Favorite, contentDescription = null)
+                        }
+                        is Screen.SearchScreen ->{
+                            Icon(Icons.Outlined.Search, contentDescription = null)
                         }
                     }
                 },

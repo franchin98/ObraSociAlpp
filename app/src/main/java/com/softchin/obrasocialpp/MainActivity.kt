@@ -13,10 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.softchin.obrasocialpp.ui.components.CusttomBottomAppBar
+import com.softchin.obrasocialpp.ui.components.CustomBottomAppBar
 import com.softchin.obrasocialpp.ui.components.Screen
 import com.softchin.obrasocialpp.ui.screens.HealthScreen
-import com.softchin.obrasocialpp.ui.screens.HomeScreen
+import com.softchin.obrasocialpp.ui.screens.search.SearchViewModel
+import com.softchin.obrasocialpp.ui.screens.search.SearchScreen
 import com.softchin.obrasocialpp.ui.theme.ObraSociALppTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,18 +37,25 @@ class MainActivity : ComponentActivity() {
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            bottomBar = { CusttomBottomAppBar(bottomNavController = navController) }
+            bottomBar = { CustomBottomAppBar(bottomNavController = navController) }
         ) { innerPadding ->
             NavHost(
                 navController = navController,
                 startDestination = Screen.HomeScreen.route
             ) {
                 composable(Screen.HomeScreen.route, enterTransition = { slideInVertically() }) {
-                    HomeScreen(modifier = Modifier.padding(innerPadding))
+                   // HomeScreen(modifier = Modifier.padding(innerPadding))
+                    val search = SearchViewModel()
+                    SearchScreen(search)
                 }
 
                 composable(Screen.HealthScreen.route, enterTransition = { slideInHorizontally() }) {
                     HealthScreen(modifier = Modifier.padding(innerPadding))
+                }
+
+                composable(Screen.SearchScreen.route){
+                    val search = SearchViewModel()
+                    SearchScreen(search)
                 }
             }
         }
