@@ -30,15 +30,7 @@ fun CusttomBottomAppBar(bottomNavController: NavController) {
                 selectedContentColor = Color.Red,
                 unselectedContentColor = Color.White,
                 icon = {
-                    when (currentScreen) {
-                        is Screen.HomeScreen -> {
-                            Icon(Icons.Outlined.Home, contentDescription = null)
-                        }
-
-                        is Screen.HealthScreen -> {
-                            Icon(Icons.Outlined.Favorite, contentDescription = null)
-                        }
-                    }
+                    Icon(currentScreen.icon!!, contentDescription = null)
                 },
 
                 onClick = {
