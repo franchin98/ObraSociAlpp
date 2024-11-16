@@ -13,12 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.softchin.obrasocialpp.ui.components.CustomBottomAppBar
+import com.softchin.obrasocialpp.ui.theme.ObraSociALppTheme
+import com.softchin.obrasocialpp.ui.components.CusttomBottomAppBar
 import com.softchin.obrasocialpp.ui.components.Screen
 import com.softchin.obrasocialpp.ui.screens.HealthScreen
-import com.softchin.obrasocialpp.ui.screens.search.SearchViewModel
-import com.softchin.obrasocialpp.ui.screens.search.SearchScreen
-import com.softchin.obrasocialpp.ui.theme.ObraSociALppTheme
+import com.softchin.obrasocialpp.ui.screens.HomeScreen
+import com.softchin.obrasocialpp.ui.screens.LoginScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,25 +37,22 @@ class MainActivity : ComponentActivity() {
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            bottomBar = { CustomBottomAppBar(bottomNavController = navController) }
+            bottomBar = { CusttomBottomAppBar(bottomNavController = navController) }
         ) { innerPadding ->
             NavHost(
                 navController = navController,
-                startDestination = Screen.HomeScreen.route
+                startDestination = Screen.LoginScreen.route
             ) {
+                composable(Screen.LoginScreen.route) {
+                    LoginScreen(modifier = Modifier.padding(innerPadding))
+                }
+
                 composable(Screen.HomeScreen.route, enterTransition = { slideInVertically() }) {
-                   // HomeScreen(modifier = Modifier.padding(innerPadding))
-                    val search = SearchViewModel()
-                    SearchScreen(search)
+                    HomeScreen(modifier = Modifier.padding(innerPadding))
                 }
 
                 composable(Screen.HealthScreen.route, enterTransition = { slideInHorizontally() }) {
                     HealthScreen(modifier = Modifier.padding(innerPadding))
-                }
-
-                composable(Screen.SearchScreen.route){
-                    val search = SearchViewModel()
-                    SearchScreen(search)
                 }
             }
         }
