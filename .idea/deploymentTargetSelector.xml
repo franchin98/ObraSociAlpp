@@ -13,10 +13,7 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="PreviewFilter">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
-      <SelectionState runConfigName="FilterBarPreview">
+      <SelectionState runConfigName="CentroBusqueda">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
