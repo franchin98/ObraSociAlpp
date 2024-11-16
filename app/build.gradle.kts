@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.coil.compose)
     implementation(libs.accompanist.flowlayout)
     //navigation
     implementation(libs.androidx.compose.navigation)
