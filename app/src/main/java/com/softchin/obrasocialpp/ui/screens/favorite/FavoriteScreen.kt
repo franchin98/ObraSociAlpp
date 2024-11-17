@@ -1,9 +1,11 @@
 package com.softchin.obrasocialpp.ui.screens.favorite
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,7 +14,7 @@ import com.softchin.obrasocialpp.domain.FavoriteResultModel
 import com.softchin.obrasocialpp.ui.components.MyFavoriteItem
 
 @Composable
-fun FavoriteScreen(){
+fun FavoriteScreen(modifier: Modifier = Modifier) {
 //    val viewModel: FavoriteViewModel
     val list =
         listOf(
@@ -75,7 +77,8 @@ fun FavoriteScreen(){
     Column(
         modifier =
         Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.surface),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
@@ -89,6 +92,6 @@ fun FavoriteScreen(){
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewFavorite(){
+fun PreviewFavorite() {
     FavoriteScreen()
 }

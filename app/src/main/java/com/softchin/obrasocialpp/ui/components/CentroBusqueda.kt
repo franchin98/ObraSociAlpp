@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -27,8 +27,8 @@ fun CentroBusqueda(centro: CentroResultado = CentroResultado.getMock()) {
         ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 12.dp),
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colors.secondary,
-                contentColor = MaterialTheme.colors.onSecondary
+                containerColor = MaterialTheme.colorScheme.secondary,
+                contentColor = MaterialTheme.colorScheme.onSecondary
             ),
             modifier = Modifier.padding(10.dp)
         ) {
@@ -40,11 +40,11 @@ fun CentroBusqueda(centro: CentroResultado = CentroResultado.getMock()) {
                         .fillMaxWidth()
                         .padding(bottom = 10.dp),
                     textAlign = TextAlign.Center,
-                    color = MaterialTheme.colors.onSecondary
+                    color = MaterialTheme.colorScheme.onSecondary
                 )
-                Text(centro.ubicacion, fontSize = 15.sp, color = MaterialTheme.colors.onSecondary)
-                Text(centro.horarios, fontSize = 15.sp, color = MaterialTheme.colors.onSecondary)
-                Text(obrasSociales, fontSize = 15.sp, color = MaterialTheme.colors.onSecondary)
+                Text(centro.ubicacion, fontSize = 15.sp, color = MaterialTheme.colorScheme.onSecondary)
+                Text(centro.horarios, fontSize = 15.sp, color = MaterialTheme.colorScheme.onSecondary)
+                Text(obrasSociales, fontSize = 15.sp, color = MaterialTheme.colorScheme.onSecondary)
             }
         }
     }

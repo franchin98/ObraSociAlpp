@@ -15,17 +15,17 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.softchin.obrasocialpp.ui.components.CusttomBottomAppBar
 import com.softchin.obrasocialpp.ui.components.Screen
-import com.softchin.obrasocialpp.ui.screens.HealthScreen
 import com.softchin.obrasocialpp.ui.screens.HomeScreen
 import com.softchin.obrasocialpp.ui.screens.LoginScreen
 import com.softchin.obrasocialpp.ui.screens.ProfileScreen
-import com.softchin.obrasocialpp.ui.theme.AppTheme
+import com.softchin.obrasocialpp.ui.screens.favorite.FavoriteScreen
+import com.softchin.obrasocialpp.ui.theme.BusCartillaTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            AppTheme {
+            BusCartillaTheme {
                 App()
             }
         }
@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
                 }
 
                 composable(Screen.FavoritesScreen.route, enterTransition = { slideInHorizontally() }) {
-                    HealthScreen(modifier = Modifier.padding(innerPadding))
+                    FavoriteScreen(modifier = Modifier.padding(innerPadding))
                 }
 
                 composable(Screen.ProfileScreen.route, enterTransition = { slideInHorizontally() }) {

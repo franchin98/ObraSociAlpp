@@ -1,15 +1,17 @@
 package com.softchin.obrasocialpp.ui.screens
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Text
@@ -25,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
 import com.softchin.obrasocialpp.R
+import com.softchin.obrasocialpp.ui.components.Screen
 import com.softchin.obrasocialpp.ui.theme.bodyFontFamily
 import com.softchin.obrasocialpp.ui.theme.displayFontFamily
 
@@ -33,7 +36,11 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
 
     val navController = rememberNavController()
 
-    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = androidx.compose.material3.MaterialTheme.colorScheme.surface)
+    ) {
         Text(
             text = "Mi perfil",
             fontSize = 42.sp,
@@ -62,12 +69,12 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.size(100.dp))
         TextButton(
             colors = ButtonColors(
-                containerColor = MaterialTheme.colors.primary,
-                contentColor = MaterialTheme.colors.onPrimary,
-                disabledContainerColor = MaterialTheme.colors.primaryVariant,
-                disabledContentColor = MaterialTheme.colors.onPrimary
+                containerColor = MaterialTheme.colorScheme.errorContainer,
+                contentColor = MaterialTheme.colorScheme.error,
+                disabledContainerColor = MaterialTheme.colorScheme.inversePrimary,
+                disabledContentColor = MaterialTheme.colorScheme.onPrimary
             ),
-            onClick = { navController.navigate("login") },
+            onClick = { navController.navigate(Screen.LoginScreen.route) },
             modifier = Modifier
                 .height(70.dp)
                 .width(280.dp)

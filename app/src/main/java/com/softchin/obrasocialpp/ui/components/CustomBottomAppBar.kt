@@ -3,7 +3,7 @@ package com.softchin.obrasocialpp.ui.components
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavController
@@ -16,7 +16,7 @@ fun CusttomBottomAppBar(bottomNavController: NavController) {
 
     val screens = listOf(Screen.HomeScreen, Screen.FavoritesScreen, Screen.ProfileScreen)
 
-    BottomNavigation(backgroundColor = MaterialTheme.colors.primaryVariant) {
+    BottomNavigation(backgroundColor = MaterialTheme.colorScheme.primaryContainer) {
 
         val navBackStackEntry by bottomNavController.currentBackStackEntryAsState()
         val actualDestination = navBackStackEntry?.destination
@@ -24,8 +24,8 @@ fun CusttomBottomAppBar(bottomNavController: NavController) {
         screens.forEach { currentScreen ->
             BottomNavigationItem(
                 selected = actualDestination?.hierarchy?.any { it.route == currentScreen.route } == true,
-                selectedContentColor = MaterialTheme.colors.onPrimary,
-                unselectedContentColor = MaterialTheme.colors.primary,
+                selectedContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
+                unselectedContentColor = MaterialTheme.colorScheme.onSecondary,
                 icon = {
                     Icon(currentScreen.icon, contentDescription = null)
                 },

@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material3.CardDefaults
@@ -42,8 +42,8 @@ fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto:
         ElevatedCard(
             elevation = CardDefaults.cardElevation(defaultElevation = 3.dp),
             colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colors.surface,
-                contentColor = MaterialTheme.colors.onSurface
+                containerColor = MaterialTheme.colorScheme.surfaceContainer,
+                contentColor = MaterialTheme.colorScheme.onSurfaceVariant
             ),
             modifier = Modifier.padding(10.dp)
         ) {
@@ -54,7 +54,7 @@ fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto:
                     modifier = Modifier
                         .fillMaxWidth().align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
-                    color = MaterialTheme.colors.onSecondary,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer,
                     fontFamily = displayFontFamily
                 )
                 if (mostrarFoto) {
@@ -75,21 +75,21 @@ fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto:
                 Text(
                     "📌 " + centro.ubicacion,
                     fontSize = 15.sp,
-                    color = MaterialTheme.colors.onSecondary,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontFamily = bodyFontFamily
                 )
                 Spacer(modifier = Modifier.padding(5.dp))
                 Text(
                     "🕒 " + centro.horarios,
                     fontSize = 15.sp,
-                    color = MaterialTheme.colors.onSecondary,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontFamily = bodyFontFamily
                 )
                 Spacer(modifier = Modifier.padding(5.dp))
                 Text(
                     "🎫 " + obrasSociales,
                     fontSize = 15.sp,
-                    color = MaterialTheme.colors.onSecondary,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontFamily = bodyFontFamily
                 )
             }
