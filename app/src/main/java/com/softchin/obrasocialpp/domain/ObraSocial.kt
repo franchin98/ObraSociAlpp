@@ -10,5 +10,7 @@ enum class ObraSocial(val nombre: String) {
     GALENO("Galeno"),
     MEDICUS("Medicus"),
     SANCOR("Sancor Salud"),
-    HOSPITAL_ITALIANO("Hospital Italiano")
+    HOSPITAL_ITALIANO("Hospital Italiano"),
+    PARTICULAR("Particular"),
+    GRATUITO("Gratuito")
 }

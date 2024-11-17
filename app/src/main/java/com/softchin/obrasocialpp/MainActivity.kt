@@ -13,28 +13,27 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.softchin.obrasocialpp.ui.theme.ObraSociALppTheme
 import com.softchin.obrasocialpp.ui.components.CusttomBottomAppBar
 import com.softchin.obrasocialpp.ui.components.Screen
 import com.softchin.obrasocialpp.ui.screens.HealthScreen
 import com.softchin.obrasocialpp.ui.screens.HomeScreen
 import com.softchin.obrasocialpp.ui.screens.LoginScreen
+import com.softchin.obrasocialpp.ui.screens.ProfileScreen
+import com.softchin.obrasocialpp.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ObraSociALppTheme {
+            AppTheme {
                 App()
             }
         }
     }
 
-
     @Composable
     private fun App() {
         val navController = rememberNavController()
-
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             bottomBar = { CusttomBottomAppBar(bottomNavController = navController) }
@@ -47,12 +46,16 @@ class MainActivity : ComponentActivity() {
                     LoginScreen(modifier = Modifier.padding(innerPadding))
                 }
 
-                composable(Screen.HomeScreen.route, enterTransition = { slideInVertically() }) {
+                composable(Screen.HomeScreen.route, enterTransition = { slideInHorizontally() }) {
                     HomeScreen(modifier = Modifier.padding(innerPadding))
                 }
 
-                composable(Screen.HealthScreen.route, enterTransition = { slideInHorizontally() }) {
+                composable(Screen.FavoritesScreen.route, enterTransition = { slideInHorizontally() }) {
                     HealthScreen(modifier = Modifier.padding(innerPadding))
+                }
+
+                composable(Screen.ProfileScreen.route, enterTransition = { slideInHorizontally() }) {
+                    ProfileScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

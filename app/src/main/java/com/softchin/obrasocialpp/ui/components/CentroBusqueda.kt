@@ -4,7 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -19,17 +23,29 @@ import com.softchin.obrasocialpp.utils.StringUtils
 fun CentroBusqueda(centro: CentroResultado = CentroResultado.getMock()) {
     val obrasSociales = StringUtils.getObrasSociales(centro.obrasSociales)
 
-    Row(Modifier.padding(10.dp)) {
-        Column {
-            Text(
-                text = centro.nombre,
-                fontSize = 30.sp,
-                modifier = Modifier.fillMaxWidth(),
-                textAlign = TextAlign.Center
-            )
-            Text(centro.ubicacion, fontSize = 15.sp)
-            Text(centro.horarios, fontSize = 15.sp)
-            Text(obrasSociales, fontSize = 15.sp)
+    Row {
+        ElevatedCard(
+            elevation = CardDefaults.cardElevation(defaultElevation = 12.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colors.secondary,
+                contentColor = MaterialTheme.colors.onSecondary
+            ),
+            modifier = Modifier.padding(10.dp)
+        ) {
+            Column(Modifier.padding(10.dp)) {
+                Text(
+                    text = centro.nombre,
+                    fontSize = 30.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 10.dp),
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colors.onSecondary
+                )
+                Text(centro.ubicacion, fontSize = 15.sp, color = MaterialTheme.colors.onSecondary)
+                Text(centro.horarios, fontSize = 15.sp, color = MaterialTheme.colors.onSecondary)
+                Text(obrasSociales, fontSize = 15.sp, color = MaterialTheme.colors.onSecondary)
+            }
         }
     }
 }

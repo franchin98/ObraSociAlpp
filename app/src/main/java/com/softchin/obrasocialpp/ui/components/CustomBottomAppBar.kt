@@ -3,12 +3,9 @@ package com.softchin.obrasocialpp.ui.components
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -17,9 +14,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 @Composable
 fun CusttomBottomAppBar(bottomNavController: NavController) {
 
-    val screens = listOf(Screen.HomeScreen, Screen.HealthScreen)
+    val screens = listOf(Screen.HomeScreen, Screen.FavoritesScreen, Screen.ProfileScreen)
 
-    BottomNavigation {
+    BottomNavigation(backgroundColor = MaterialTheme.colors.primaryVariant) {
 
         val navBackStackEntry by bottomNavController.currentBackStackEntryAsState()
         val actualDestination = navBackStackEntry?.destination
@@ -27,10 +24,10 @@ fun CusttomBottomAppBar(bottomNavController: NavController) {
         screens.forEach { currentScreen ->
             BottomNavigationItem(
                 selected = actualDestination?.hierarchy?.any { it.route == currentScreen.route } == true,
-                selectedContentColor = Color.Red,
-                unselectedContentColor = Color.White,
+                selectedContentColor = MaterialTheme.colors.onPrimary,
+                unselectedContentColor = MaterialTheme.colors.primary,
                 icon = {
-                    Icon(currentScreen.icon!!, contentDescription = null)
+                    Icon(currentScreen.icon, contentDescription = null)
                 },
 
                 onClick = {

@@ -50,8 +50,9 @@ android {
 }
 
 dependencies {
-    implementation(libs.coil.compose)
-    implementation(libs.accompanist.flowlayout)
+    implementation("io.coil-kt.coil3:coil-compose:3.0.3")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.3")
+    implementation("com.google.accompanist:accompanist-flowlayout:0.24.13-rc")
     //navigation
     implementation(libs.androidx.compose.navigation)
 
