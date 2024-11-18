@@ -37,6 +37,14 @@ import com.softchin.obrasocialpp.utils.StringUtils
 @Composable
 fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto: Boolean = true) {
     val obrasSociales = StringUtils.getObrasSociales(centro.obrasSociales)
+    var modifier = Modifier.padding(5.dp)
+
+    if (centro.coincideObraSocial)
+        modifier = modifier.border(
+            5.dp,
+            /*Color(144, 179, 64)*/MaterialTheme.colorScheme.primaryContainer,
+            RoundedCornerShape(10.dp)
+        )
 
     Row {
         ElevatedCard(
@@ -45,7 +53,7 @@ fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto:
                 containerColor = MaterialTheme.colorScheme.surfaceContainer,
                 contentColor = MaterialTheme.colorScheme.onSurfaceVariant
             ),
-            modifier = Modifier.padding(10.dp)
+            modifier = modifier
         ) {
             Column(Modifier.padding(10.dp)) {
                 Text(
@@ -69,6 +77,7 @@ fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto:
                             .clip(RoundedCornerShape(size = 10.dp))
                             .padding(bottom = 5.dp)
                             .size(width = 300.dp, height = 200.dp)
+                            .align(Alignment.CenterHorizontally)
                     )
                 }
                 Spacer(modifier = Modifier.padding(5.dp))

@@ -75,6 +75,36 @@ data class CentroResultado(
                     "https://lh3.googleusercontent.com/p/AF1QipPfj7XRz97ziuF-wKd-4wWoe9cNI6JjFhRCq4Md=s680-w680-h510",
                     true,
                     false
+                ),
+                CentroResultado(
+                    "IOSFA - Centro Médico Morón",
+                    "Lunes a Viernes, 8HS - 20HS",
+                    "Río Piedras 346, Morón",
+                    listOf(ObraSocial.IOSFA),
+                    listOf(Especialidad.GINECOLOGIA, Especialidad.PEDIATRIA, Especialidad.MEDICINA_FAMILIAR),
+                    "https://upload.wikimedia.org/wikipedia/commons/1/1c/Letrero_del_Hospital_de_Medina_del_Campo.JPG",
+                    false,
+                    true
+                ),
+                CentroResultado(
+                    "Hospital Nacional Profesor Alejandro Posadas",
+                    "Abierto las 24HS",
+                    "Presidente Illia s/n y Marconi, El Palomar",
+                    listOf(ObraSocial.GRATUITO),
+                    listOf(Especialidad.CIRUGIA_CARDIOVASCULAR, Especialidad.NEUROCIRUGIA),
+                    "https://www.clarin.com/img/2022/07/11/k4Y6bn-AG_2000x1500__1.jpg",
+                    true,
+                    false
+                ),
+                CentroResultado(
+                    "Hospital Italiano - Centro Médico Morón",
+                    "Lunes a Viernes, 8HS - 20HS",
+                    "Av. Rivadavia 17955, Morón",
+                    listOf(ObraSocial.HOSPITAL_ITALIANO),
+                    listOf(Especialidad.CLINICA_MEDICA, Especialidad.PEDIATRIA, Especialidad.GINECOLOGIA),
+                    "https://www.hospitalitaliano.org.ar/images/centros/moron.jpg",
+                    false,
+                    true
                 )
             )
         }

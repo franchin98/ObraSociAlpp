@@ -71,7 +71,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         )
         Spacer(modifier = Modifier.height(2.dp))
         LazyRow {
-            items(centros) {
+            items(centros.filter { it.coincideObraSocial }) {
                 CentroHome(it, false)
             }
         }
