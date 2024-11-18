@@ -32,6 +32,13 @@ fun CusttomBottomAppBar(bottomNavController: NavController) {
 
                 onClick = {
                     bottomNavController.navigate(currentScreen.route) {
+
+                        if (actualDestination != null && currentScreen.route == "Home") {
+                            popUpTo(actualDestination.id) {
+                                saveState = false
+                            }
+                        }
+
                         popUpTo(bottomNavController.graph.findStartDestination().id) {
                             saveState = true
                         }

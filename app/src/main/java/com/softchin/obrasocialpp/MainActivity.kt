@@ -4,20 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.softchin.obrasocialpp.ui.components.CusttomBottomAppBar
 import com.softchin.obrasocialpp.ui.components.Screen
 import com.softchin.obrasocialpp.ui.screens.HomeScreen
 import com.softchin.obrasocialpp.ui.screens.LoginScreen
 import com.softchin.obrasocialpp.ui.screens.ProfileScreen
+import com.softchin.obrasocialpp.ui.screens.ScreenWithBottomBar
 import com.softchin.obrasocialpp.ui.screens.favorite.FavoriteScreen
 import com.softchin.obrasocialpp.ui.theme.BusCartillaTheme
 
@@ -34,28 +29,37 @@ class MainActivity : ComponentActivity() {
     @Composable
     private fun App() {
         val navController = rememberNavController()
-        Scaffold(
-            modifier = Modifier.fillMaxSize(),
-            bottomBar = { CusttomBottomAppBar(bottomNavController = navController) }
-        ) { innerPadding ->
-            NavHost(
-                navController = navController,
-                startDestination = Screen.LoginScreen.route
+        NavHost(
+            navController = navController,
+            startDestination = Screen.LoginScreen.route,
+        ) {
+            composable(route = Screen.LoginScreen.route) {
+                LoginScreen(onLoginSuccess = { navController.navigate(Screen.HomeScreen.route) })
+            }
+
+            composable(
+                route = Screen.HomeScreen.route,
+                enterTransition = { slideInHorizontally() }
             ) {
-                composable(Screen.LoginScreen.route) {
-                    LoginScreen(modifier = Modifier.padding(innerPadding))
+                ScreenWithBottomBar(navController = navController) {
+                    HomeScreen()
                 }
+            }
 
-                composable(Screen.HomeScreen.route, enterTransition = { slideInHorizontally() }) {
-                    HomeScreen(modifier = Modifier.padding(innerPadding))
+            composable(
+                route = Screen.FavoritesScreen.route,
+                enterTransition = { slideInHorizontally() }) {
+                ScreenWithBottomBar(navController = navController) {
+                    FavoriteScreen()
                 }
+            }
 
-                composable(Screen.FavoritesScreen.route, enterTransition = { slideInHorizontally() }) {
-                    FavoriteScreen(modifier = Modifier.padding(innerPadding))
-                }
-
-                composable(Screen.ProfileScreen.route, enterTransition = { slideInHorizontally() }) {
-                    ProfileScreen(modifier = Modifier.padding(innerPadding))
+            composable(
+                route = Screen.ProfileScreen.route,
+                enterTransition = { slideInHorizontally() }
+            ) {
+                ScreenWithBottomBar(navController = navController) {
+                    ProfileScreen(navController = navController)
                 }
             }
         }
