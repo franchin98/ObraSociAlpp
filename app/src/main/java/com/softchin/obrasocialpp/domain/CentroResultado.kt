@@ -57,7 +57,7 @@ data class CentroResultado(
                     false
                 ),
                 CentroResultado(
-                    "Ospedyc - Centro Medico Zona Oeste",
+                    "Ospedyc Zona Oeste",
                     "Lunes a Viernes, 8HS - 19HS",
                     "Maestra Cueto 723, Morón",
                     listOf(ObraSocial.LUIS_PASTEUR, ObraSocial.SANCOR),
@@ -77,7 +77,7 @@ data class CentroResultado(
                     false
                 ),
                 CentroResultado(
-                    "IOSFA - Centro Médico Morón",
+                    "IOSFA Morón",
                     "Lunes a Viernes, 8HS - 20HS",
                     "Río Piedras 346, Morón",
                     listOf(ObraSocial.IOSFA),
@@ -87,7 +87,7 @@ data class CentroResultado(
                     true
                 ),
                 CentroResultado(
-                    "Hospital Nacional Profesor Alejandro Posadas",
+                    "Hospital Nacional Posadas",
                     "Abierto las 24HS",
                     "Presidente Illia s/n y Marconi, El Palomar",
                     listOf(ObraSocial.GRATUITO),
@@ -97,7 +97,7 @@ data class CentroResultado(
                     false
                 ),
                 CentroResultado(
-                    "Hospital Italiano - Centro Médico Morón",
+                    "Hospital Italiano",
                     "Lunes a Viernes, 8HS - 20HS",
                     "Av. Rivadavia 17955, Morón",
                     listOf(ObraSocial.HOSPITAL_ITALIANO),
