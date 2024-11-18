@@ -10,5 +10,9 @@ enum class Especialidad(val nombre: String) {
     UROLOGIA("Urología"),
     TRAUMATOLOGIA("Traumatología"),
     PODOLOGIA("Podología"),
-    PEDIATRIA("Pediatría")
+    PEDIATRIA("Pediatría"),
+    MEDICINA_FAMILIAR("Medicina Familiar"),
+    NEUROCIRUGIA("Neurocirugía"),
+    CIRUGIA_CARDIOVASCULAR("Cirugía Cardiovascular"),
+    CLINICA_MEDICA("Clínica Médica"),
 }

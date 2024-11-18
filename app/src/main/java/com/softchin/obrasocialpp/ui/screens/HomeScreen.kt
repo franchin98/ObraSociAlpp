@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -34,7 +35,10 @@ fun HomeScreen(modifier: Modifier = Modifier) {
     val centros = CentroResultado.getMocks()
 
     Column(
-        modifier = modifier.fillMaxSize().background(color = MaterialTheme.colorScheme.surface),
+        modifier = modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.surface)
+            .padding(bottom = 50.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(modifier = Modifier.height(5.dp))
@@ -45,7 +49,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             fontSize = 28.sp,
-            fontFamily = displayFontFamily
+            fontFamily = MaterialTheme.typography.displayLarge.fontFamily
         )
         Spacer(modifier = Modifier.height(5.dp))
         Text(
@@ -53,7 +57,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             fontSize = 20.sp,
-            fontFamily = displayFontFamily
+            fontFamily = MaterialTheme.typography.displayMedium.fontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         LazyRow {
@@ -67,11 +71,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             fontSize = 20.sp,
-            fontFamily = displayFontFamily
+            fontFamily = MaterialTheme.typography.displayMedium.fontFamily
         )
         Spacer(modifier = Modifier.height(2.dp))
         LazyRow {
-            items(centros) {
+            items(centros.filter { it.coincideObraSocial }) {
                 CentroHome(it, false)
             }
         }

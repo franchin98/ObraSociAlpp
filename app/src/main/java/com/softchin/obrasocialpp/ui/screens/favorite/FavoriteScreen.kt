@@ -3,95 +3,47 @@ package com.softchin.obrasocialpp.ui.screens.favorite
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.softchin.obrasocialpp.domain.CentroResultado
 import com.softchin.obrasocialpp.domain.FavoriteResultModel
+import com.softchin.obrasocialpp.ui.components.CentroBusqueda
 import com.softchin.obrasocialpp.ui.components.MyFavoriteItem
+import com.softchin.obrasocialpp.ui.theme.displayFontFamily
 
+@Preview
 @Composable
 fun FavoriteScreen(modifier: Modifier = Modifier) {
-//    val viewModel: FavoriteViewModel
-    val list =
-        listOf(
-            FavoriteResultModel(
-                name = "Hospital 1",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = true,
-                photoUrl = ""
-            ),
-            FavoriteResultModel(
-                name = "Hospital 2",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = true,
-                photoUrl = ""
-            ),
-            FavoriteResultModel(
-                name = "Hospital 3",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = true,
-                photoUrl = ""
-            ),
-            FavoriteResultModel(
-                name = "Hospital 4",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = false,
-                photoUrl = ""
-            ),
-            FavoriteResultModel(
-                name = "Hospital 5",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = false,
-                photoUrl = ""
-            ),
-            FavoriteResultModel(
-                name = "Hospital 6",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = true,
-                photoUrl = ""
-            ),
-            FavoriteResultModel(
-                name = "Hospital 7",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = true,
-                photoUrl = ""
-            ),
-            FavoriteResultModel(
-                name = "Hospital 8",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = true,
-                photoUrl = ""
-            ),
-            FavoriteResultModel(
-                name = "Hospital 9",
-                address = "Av. Siempre viva 123",
-                coveredByHealthInsurance = true,
-                photoUrl = ""
-            ),
-        )
+    val centros = CentroResultado.getMocks().filter { it.esFavorito }
 
-    Column(
+    LazyColumn(
         modifier =
         Modifier
             .fillMaxSize()
-            .background(color = MaterialTheme.colorScheme.surface),
+            .background(color = MaterialTheme.colorScheme.surface)
+            .padding(bottom = 50.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
+        item {
+            Text(
+                text = "Favoritos",
+                fontSize = 42.sp,
+                fontFamily = displayFontFamily,
+                modifier = Modifier.padding(20.dp)
+            )
+        }
 
-        LazyColumn {
-            items(list) { item ->
-                MyFavoriteItem(item, onClick = {})
-            }
+        items(centros) { item ->
+            CentroBusqueda(item)
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewFavorite() {
-    FavoriteScreen()
 }
