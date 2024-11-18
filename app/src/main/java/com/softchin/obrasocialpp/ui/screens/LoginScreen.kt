@@ -9,14 +9,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Button
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -35,7 +33,12 @@ import com.softchin.obrasocialpp.ui.components.ProviderAuthButton
 
 @Preview(showSystemUi = true, showBackground = true)
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier, onLoginSuccess: () -> Unit = {}) {
+fun LoginScreen(
+    modifier: Modifier = Modifier,
+    onLoginSuccess: () -> Unit = {},
+    onClickRegister: () -> Unit = {},
+    onClickContinueAsGuest: () -> Unit = {}
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -106,15 +109,34 @@ fun LoginScreen(modifier: Modifier = Modifier, onLoginSuccess: () -> Unit = {}) 
                 "Registrate",
                 modifier = Modifier
                     .padding(start = 2.dp)
-                    .clickable {  },
+                    .clickable { onClickRegister() },
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onTertiaryContainer
             )
         }
 
-        Text("o", modifier = Modifier.padding(top = 5.dp), color = MaterialTheme.colorScheme.onTertiaryContainer)
+        Text(
+            "o",
+            modifier = Modifier.padding(top = 5.dp),
+            color = MaterialTheme.colorScheme.onTertiaryContainer
+        )
 
-        Text("Continuar como invitado.", modifier = Modifier.padding(top = 5.dp), color = MaterialTheme.colorScheme.onTertiaryContainer)
+        Row {
+            Text(
+                "Continuar como ",
+                modifier = Modifier.padding(top = 5.dp),
+                color = MaterialTheme.colorScheme.onTertiaryContainer
+            )
+
+            Text(
+                "invitado.",
+                modifier = Modifier
+                    .padding(top = 5.dp, start = 0.5.dp)
+                    .clickable { onClickContinueAsGuest() },
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onTertiaryContainer
+            )
+        }
 
     }
 }

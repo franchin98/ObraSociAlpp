@@ -15,6 +15,9 @@ sealed class Screen(val route: String, @Contextual val icon: ImageVector) {
     data object LoginScreen: Screen("Login", Icons.Default.Person)
 
     @Serializable
+    data object RegisterScreen
+
+    @Serializable
     data object HomeScreen: Screen("Home", Icons.Default.Home)
 
     @Serializable
