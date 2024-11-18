@@ -45,7 +45,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             fontSize = 28.sp,
-            fontFamily = displayFontFamily
+            fontFamily = MaterialTheme.typography.displayLarge.fontFamily
         )
         Spacer(modifier = Modifier.height(5.dp))
         Text(
@@ -53,7 +53,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             fontSize = 20.sp,
-            fontFamily = displayFontFamily
+            fontFamily = MaterialTheme.typography.displayMedium.fontFamily
         )
         Spacer(modifier = Modifier.height(15.dp))
         LazyRow {
@@ -67,7 +67,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             fontSize = 20.sp,
-            fontFamily = displayFontFamily
+            fontFamily = MaterialTheme.typography.displayMedium.fontFamily
         )
         Spacer(modifier = Modifier.height(2.dp))
         LazyRow {

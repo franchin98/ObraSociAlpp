@@ -27,6 +27,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.softchin.obrasocialpp.domain.CentroResultado
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,13 +37,20 @@ fun SearchBox(
     onQueryChange: (String) -> Unit = {},
     onSearch: () -> Unit = {},
     onActiveChange: (Boolean) -> Unit = {},
-    listForSearch: State<List<String>>? = null,
+    listForSearch: State<List<CentroResultado>>? = mutableStateOf(listOf()),
     filterList: (String) -> Unit = {},
 ) {
     var text by remember { mutableStateOf(initialText) }
     var active by remember { mutableStateOf(false) }
 
     val widthFraction = animateFloatAsState(if (active) 1f else 0.96f, label = "")
+
+    val selectedFilters = mapOf(
+        "Location" to listOf("Current Location"),
+        "Social Security" to listOf("My Social Security"),
+        "Specialty" to listOf("General Practitioner", "Dermatologist"),
+        "Doctors" to listOf("Available Doctors")
+    )
 
     SearchBar(
         modifier =
@@ -102,16 +110,21 @@ fun SearchBox(
         },
         shadowElevation = 4.dp,
         colors = SearchBarDefaults.colors(
-            containerColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+            containerColor = MaterialTheme.colorScheme.surface,
         )
     ) {
         // /aca deberia poner el resultado de la busqueda
         LaunchedEffect(key1 = text) {
             filterList(text)
         }
+        FilterBar(
+            selectedFilters = selectedFilters,
+            onFilterSelected = { _, _ -> },
+            onFilterRemoved = { _, _ -> }
+        )
         LazyColumn {
-            items(listForSearch!!.value) { publication ->
-               //model de los resultados
+            items(/*listForSearch!!.value*/CentroResultado.getMocks()) { centro ->
+               CentroBusqueda(centro)
             }
         }
     }

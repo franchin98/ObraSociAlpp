@@ -55,7 +55,7 @@ fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto:
                         .fillMaxWidth().align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
-                    fontFamily = displayFontFamily
+                    fontFamily = MaterialTheme.typography.displayMedium.fontFamily
                 )
                 if (mostrarFoto) {
                     Spacer(modifier = Modifier.padding(5.dp))
@@ -76,21 +76,21 @@ fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto:
                     "📌 " + centro.ubicacion,
                     fontSize = 15.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontFamily = bodyFontFamily
+                    fontFamily = MaterialTheme.typography.bodySmall.fontFamily
                 )
                 Spacer(modifier = Modifier.padding(5.dp))
                 Text(
                     "🕒 " + centro.horarios,
                     fontSize = 15.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontFamily = bodyFontFamily
+                    fontFamily = MaterialTheme.typography.bodySmall.fontFamily
                 )
                 Spacer(modifier = Modifier.padding(5.dp))
                 Text(
                     "🎫 " + obrasSociales,
                     fontSize = 15.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontFamily = bodyFontFamily
+                    fontFamily = MaterialTheme.typography.bodySmall.fontFamily
                 )
             }
         }

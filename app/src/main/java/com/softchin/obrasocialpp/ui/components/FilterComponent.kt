@@ -1,6 +1,7 @@
 package com.softchin.obrasocialpp.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
@@ -18,6 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.accompanist.flowlayout.FlowRow
+import com.softchin.obrasocialpp.domain.Especialidad
+import com.softchin.obrasocialpp.domain.ObraSocial
+import com.softchin.obrasocialpp.utils.StringUtils
 
 @Composable
 fun FilterBar(
@@ -34,11 +38,22 @@ fun FilterBar(
             modifier = Modifier
                 .horizontalScroll(rememberScrollState())
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.Center
         ) {
             FilterDropdownButton(
-                text = "Location",
-                options = listOf("Current Location", "Approximate Location"),
+                text = "Ubicación",
+                options = listOf(
+                    "Ubicación Actual",
+                    "Morón",
+                    "Castelar",
+                    "Ituzaingó",
+                    "San Justo",
+                    "Haedo",
+                    "Merlo",
+                    "Moreno",
+                    "Tablada",
+                    "Villa Luzuriaga",
+                ),
                 isMultipleSelectionAllowed = false,
                 selectedFilters = selectedFilters["Location"] ?: emptyList(),
                 onOptionSelected = { option ->
@@ -46,8 +61,8 @@ fun FilterBar(
                 }
             )
             FilterDropdownButton(
-                text = "Social Security",
-                options = listOf("My Social Security", "Private", "All"),
+                text = "Obra Social",
+                options = ObraSocial.entries.map { it.nombre },
                 isMultipleSelectionAllowed = false,
                 selectedFilters = selectedFilters["Social Security"] ?: emptyList(),
                 onOptionSelected = { option ->
@@ -55,21 +70,12 @@ fun FilterBar(
                 }
             )
             FilterDropdownButton(
-                text = "Specialty",
-                options = listOf("General Practitioner", "Dermatologist", "Nutritionist", "Other"),
+                text = "Especialidad",
+                options = Especialidad.entries.map { it.nombre },
                 isMultipleSelectionAllowed = true,
                 selectedFilters = selectedFilters["Specialty"] ?: emptyList(),
                 onOptionSelected = { option ->
                     onFilterSelected("Specialty", option)
-                }
-            )
-            FilterDropdownButton(
-                text = "Doctors",
-                options = listOf("Available Doctors", "Private", "All"),
-                isMultipleSelectionAllowed = true,
-                selectedFilters = selectedFilters["Doctors"] ?: emptyList(),
-                onOptionSelected = { option ->
-                    onFilterSelected("Doctors", option)
                 }
             )
         }
@@ -100,19 +106,30 @@ fun FilterDropdownButton(
     options: List<String>,
     isMultipleSelectionAllowed: Boolean,
     selectedFilters: List<String>,
-    onOptionSelected: (String) -> Unit
+    onOptionSelected: (String) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
 
-    Box {
+    Box(
+        modifier = Modifier
+            .padding(horizontal = 4.dp)
+            .background(
+                color = MaterialTheme.colorScheme.tertiary,
+                shape = RoundedCornerShape(8.dp)
+            )
+    ) {
         Row(
             modifier = Modifier
                 .clickable { expanded = true }
-                .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(8.dp))
                 .padding(horizontal = 12.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text, style = MaterialTheme.typography.bodyMedium)
+            Text(
+                text,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onTertiary
+            )
             Spacer(modifier = Modifier.width(4.dp))
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
@@ -124,7 +141,12 @@ fun FilterDropdownButton(
 
         DropdownMenu(
             expanded = expanded,
-            onDismissRequest = { expanded = false }
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.border(
+                2.dp,
+                MaterialTheme.colorScheme.tertiary,
+                RoundedCornerShape(8.dp)
+            )
         ) {
             options.forEach { option ->
                 val isSelected = option in selectedFilters
@@ -139,7 +161,11 @@ fun FilterDropdownButton(
                             }
                         }
                         expanded = false
-                    }
+                    },
+                    modifier = Modifier
+                        .background(
+                            color = if (isSelected) MaterialTheme.colorScheme.secondary else Color.Transparent
+                        )
                 )
             }
         }
