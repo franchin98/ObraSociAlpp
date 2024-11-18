@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    kotlin("plugin.serialization") version "2.0.20"
 }
 
 android {
@@ -39,9 +41,7 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -55,6 +55,8 @@ dependencies {
     implementation("com.google.accompanist:accompanist-flowlayout:0.24.13-rc")
     //navigation
     implementation(libs.androidx.compose.navigation)
+
+    implementation(libs.ktx.serialization.json)
 
     implementation(libs.androidx.material)
 

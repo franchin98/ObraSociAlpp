@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
 import com.softchin.obrasocialpp.R
@@ -32,9 +33,7 @@ import com.softchin.obrasocialpp.ui.theme.bodyFontFamily
 import com.softchin.obrasocialpp.ui.theme.displayFontFamily
 
 @Composable
-fun ProfileScreen(modifier: Modifier = Modifier) {
-
-    val navController = rememberNavController()
+fun ProfileScreen(modifier: Modifier = Modifier, navController: NavController) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
