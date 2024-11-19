@@ -59,10 +59,9 @@ fun SearchBox(
     val widthFraction = animateFloatAsState(if (active) 1f else 0.96f, label = "")
 
     val selectedFilters = mapOf(
-        "Location" to listOf("Current Location"),
-        "Social Security" to listOf("My Social Security"),
-        "Specialty" to listOf("General Practitioner", "Dermatologist"),
-        "Doctors" to listOf("Available Doctors")
+        "Ubicación" to listOf("Ubicación Actual"),
+        "Obra Social" to listOf("Swiss Medical", "OSDE", "Galeno"),
+        "Especialidad" to listOf("Cardiología", "Pediatría", "Traumatología"),
     )
 
     val toggleFilters = {
