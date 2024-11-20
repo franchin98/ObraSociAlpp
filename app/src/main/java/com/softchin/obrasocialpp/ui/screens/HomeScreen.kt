@@ -50,7 +50,7 @@ fun HomeScreen(
         SearchBox(navController = navController)
         Spacer(modifier = Modifier.height(30.dp))
         Text(
-            text = "Bienvenido, Hernán",
+            text = "Bienvenido, Juan",
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             fontSize = 28.sp,

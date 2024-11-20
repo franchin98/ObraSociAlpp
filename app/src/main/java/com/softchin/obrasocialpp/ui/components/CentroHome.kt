@@ -12,9 +12,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
@@ -22,7 +25,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -93,26 +98,50 @@ fun CentroHome(
                     )
                 }
                 Spacer(modifier = Modifier.padding(5.dp))
-                Text(
-                    "📌 " + centro.ubicacion,
-                    fontSize = 15.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontFamily = MaterialTheme.typography.bodySmall.fontFamily
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.LocationOn,
+                        contentDescription = "Horarios",
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(modifier = Modifier.padding(2.dp))
+                    Text(
+                        centro.ubicacion,
+                        fontSize = 15.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontFamily = MaterialTheme.typography.bodySmall.fontFamily
+                    )
+                }
                 Spacer(modifier = Modifier.padding(5.dp))
-                Text(
-                    "🕒 " + centro.horarios,
-                    fontSize = 15.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontFamily = MaterialTheme.typography.bodySmall.fontFamily
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = ImageVector.vectorResource(R.drawable.schedule_24dp_e8eaed_fill0_wght400_grad0_opsz24),
+                        contentDescription = "Horarios",
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(modifier = Modifier.padding(2.dp))
+                    Text(
+                        centro.horarios,
+                        fontSize = 15.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontFamily = MaterialTheme.typography.bodySmall.fontFamily
+                    )
+                }
                 Spacer(modifier = Modifier.padding(5.dp))
-                Text(
-                    "🎫 " + obrasSociales,
-                    fontSize = 15.sp,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontFamily = MaterialTheme.typography.bodySmall.fontFamily
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = ImageVector.vectorResource(R.drawable.health_and_safety_24dp_e8eaed_fill0_wght400_grad0_opsz24),
+                        contentDescription = "Horarios",
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(modifier = Modifier.padding(2.dp))
+                    Text(
+                        obrasSociales,
+                        fontSize = 15.sp,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        fontFamily = MaterialTheme.typography.bodySmall.fontFamily
+                    )
+                }
             }
         }
     }
