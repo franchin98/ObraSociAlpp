@@ -2,6 +2,7 @@ package com.softchin.obrasocialpp.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,13 +27,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.softchin.obrasocialpp.domain.CentroResultado
 import com.softchin.obrasocialpp.ui.theme.bodyFontFamily
 import com.softchin.obrasocialpp.utils.StringUtils
 
 @Preview(showBackground = true)
 @Composable
-fun CentroBusqueda(centro: CentroResultado = CentroResultado.getMocks().get(1)) {
+fun CentroBusqueda(
+    centro: CentroResultado = CentroResultado.getMocks()[1],
+    navController: NavController = rememberNavController()
+) {
     val obrasSociales = StringUtils.getObrasSociales(centro.obrasSociales)
     var modifier = Modifier.padding(10.dp)
 
@@ -50,7 +56,11 @@ fun CentroBusqueda(centro: CentroResultado = CentroResultado.getMocks().get(1)) 
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = MaterialTheme.colorScheme.onPrimary
             ),
-            modifier = modifier
+            modifier = modifier.clickable {
+                navController.navigate(
+                    "${Screen.DetailsScreen.route}/${centro.id}"
+                )
+            }
         ) {
             Column(Modifier.padding(10.dp)) {
                 Text(
@@ -98,7 +108,9 @@ fun CentroBusqueda(centro: CentroResultado = CentroResultado.getMocks().get(1)) 
                         imageVector = Icons.Default.Favorite,
                         contentDescription = "Favorito",
                         tint = if (centro.esFavorito) Color(144, 179, 64) else Color.Gray,
-                        modifier = Modifier.size(40.dp).weight(1f)
+                        modifier = Modifier
+                            .size(40.dp)
+                            .weight(1f)
                     )
                 }
             }

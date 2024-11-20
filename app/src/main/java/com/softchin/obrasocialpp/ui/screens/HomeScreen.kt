@@ -47,7 +47,7 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Spacer(modifier = Modifier.height(5.dp))
-        SearchBox()
+        SearchBox(navController = navController)
         Spacer(modifier = Modifier.height(30.dp))
         Text(
             text = "Bienvenido, Hernán",

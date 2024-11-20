@@ -39,6 +39,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.softchin.obrasocialpp.domain.CentroResultado
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,6 +53,7 @@ fun SearchBox(
     onActiveChange: (Boolean) -> Unit = {},
     listForSearch: State<List<CentroResultado>>? = mutableStateOf(listOf()),
     filterList: (String) -> Unit = {},
+    navController: NavController = rememberNavController()
 ) {
     var text by remember { mutableStateOf(initialText) }
     var active by remember { mutableStateOf(false) }
@@ -163,7 +166,7 @@ fun SearchBox(
         }
         LazyColumn {
             items(/*listForSearch!!.value*/CentroResultado.getMocks()) { centro ->
-                CentroBusqueda(centro)
+                CentroBusqueda(centro, navController = navController)
             }
         }
     }

@@ -18,6 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.softchin.obrasocialpp.domain.CentroResultado
 import com.softchin.obrasocialpp.domain.FavoriteResultModel
 import com.softchin.obrasocialpp.ui.components.CentroBusqueda
@@ -26,7 +28,10 @@ import com.softchin.obrasocialpp.ui.theme.displayFontFamily
 
 @Preview
 @Composable
-fun FavoriteScreen(modifier: Modifier = Modifier) {
+fun FavoriteScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController = rememberNavController()
+) {
     val centros = CentroResultado.getMocks().filter { it.esFavorito }
 
     LazyColumn(
@@ -57,7 +62,7 @@ fun FavoriteScreen(modifier: Modifier = Modifier) {
         }
 
         items(centros) { item ->
-            CentroBusqueda(item)
+            CentroBusqueda(item, navController = navController)
         }
     }
 }

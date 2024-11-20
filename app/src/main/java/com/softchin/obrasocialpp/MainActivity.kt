@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
             }
 
             composable<Screen.RegisterScreen>(enterTransition = { slideInHorizontally()}) {
-                RegisterScreen()
+                RegisterScreen(navController = navController)
             }
 
             composable(
@@ -76,7 +76,7 @@ class MainActivity : ComponentActivity() {
                 route = Screen.FavoritesScreen.route,
                 enterTransition = { slideInHorizontally() }) {
                 ScreenWithBottomBar(navController = navController) {
-                    FavoriteScreen()
+                    FavoriteScreen(navController = navController)
                 }
             }
 
