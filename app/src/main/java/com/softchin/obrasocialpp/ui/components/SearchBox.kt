@@ -45,7 +45,7 @@ import com.softchin.obrasocialpp.domain.CentroResultado
 @Composable
 fun SearchBox(
     initialText: String = "",
-    placeholderText: String = "Search",
+    placeholderText: String = "Buscar",
     onQueryChange: (String) -> Unit = {},
     onSearch: () -> Unit = {},
     onActiveChange: (Boolean) -> Unit = {},

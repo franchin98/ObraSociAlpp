@@ -8,10 +8,13 @@ import androidx.compose.animation.core.spring
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.softchin.obrasocialpp.ui.components.Screen
+import com.softchin.obrasocialpp.ui.screens.DetailsScreen
 import com.softchin.obrasocialpp.ui.screens.HomeScreen
 import com.softchin.obrasocialpp.ui.screens.LoginScreen
 import com.softchin.obrasocialpp.ui.screens.ProfileScreen
@@ -54,7 +57,18 @@ class MainActivity : ComponentActivity() {
                 enterTransition = { slideInHorizontally() }
             ) {
                 ScreenWithBottomBar(navController = navController) {
-                    HomeScreen()
+                    HomeScreen(navController = navController)
+                }
+            }
+
+            composable(
+                route = "${Screen.DetailsScreen.route}/{centroId}",
+                arguments = listOf(navArgument("centroId") { type = NavType.IntType }),
+                enterTransition = { slideInHorizontally() }
+            ) { backStackEntry ->
+                val centroId = backStackEntry.arguments?.getInt("centroId") ?: 1
+                ScreenWithBottomBar(navController = navController) {
+                    DetailsScreen(centroId = centroId, navController = navController)
                 }
             }
 

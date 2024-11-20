@@ -3,6 +3,7 @@ package com.softchin.obrasocialpp.ui.components
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 import kotlinx.serialization.Contextual
@@ -25,4 +26,7 @@ sealed class Screen(val route: String, @Contextual val icon: ImageVector) {
 
     @Serializable
     data object ProfileScreen: Screen("Profile", Icons.Default.Person)
+
+    @Serializable
+    data object DetailsScreen: Screen("Details", Icons.Default.Info)
 }

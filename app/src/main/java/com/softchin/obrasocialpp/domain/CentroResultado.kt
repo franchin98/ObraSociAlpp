@@ -1,6 +1,7 @@
 package com.softchin.obrasocialpp.domain
 
 data class CentroResultado(
+    val id: Int,
     val nombre: String,
     val horarios: String,
     val ubicacion: String,
@@ -13,6 +14,7 @@ data class CentroResultado(
     companion object {
         fun getMock(): CentroResultado {
             return CentroResultado(
+                1,
                 "CEMODO",
                 "Lunes a Viernes, 8HS - 20HS",
                 "República Oriental del Uruguay 353, Morón",
@@ -27,6 +29,7 @@ data class CentroResultado(
         fun getMocks(): List<CentroResultado> {
             return listOf(
                 CentroResultado(
+                    1,
                     "CEMODO",
                     "Lunes a Viernes, 8HS - 20HS",
                     "República Oriental del Uruguay 353, Morón",
@@ -37,6 +40,7 @@ data class CentroResultado(
                     true
                 ),
                 CentroResultado(
+                    2,
                     "CEPEM Consultorios Médicos",
                     "Lunes a Sábados, 8HS - 20HS",
                     "Gral. Machado 729, Morón",
@@ -47,6 +51,7 @@ data class CentroResultado(
                     true
                 ),
                 CentroResultado(
+                    3,
                     "Clínica Modelo de Morón",
                     "Abierta las 24HS",
                     "República Oriental del Uruguay 234, Morón",
@@ -57,16 +62,18 @@ data class CentroResultado(
                     false
                 ),
                 CentroResultado(
+                    4,
                     "Ospedyc Zona Oeste",
                     "Lunes a Viernes, 8HS - 19HS",
                     "Maestra Cueto 723, Morón",
                     listOf(ObraSocial.LUIS_PASTEUR, ObraSocial.SANCOR),
                     listOf(Especialidad.PSICOLOGIA, Especialidad.CARDIOLOGIA, Especialidad.PSIQUIATRIA),
-                    "https://lh3.googleusercontent.com/p/AF1QipOU2U2Y3zjBXGZF-t_eBxLCzs3dtZ4Cgq1JmJ9h=s680-w680-h510",
+                    "https://scontent.fepa8-1.fna.fbcdn.net/v/t39.30808-6/458782935_2554401421426637_4385683363808710426_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cf85f3&_nc_ohc=05JeWsSEO88Q7kNvgHlHwF4&_nc_zt=23&_nc_ht=scontent.fepa8-1.fna&_nc_gid=Ab5_xdf6UtIsBmr2HeKAjRH&oh=00_AYAxgvah9HOtjI0OK_98jcJBRCZJPG_Y18Crsxxe7mRoIQ&oe=674303D9",
                     false,
                     true
                 ),
                 CentroResultado(
+                    5,
                     "Hospital de Morón",
                     "Abierto las 24HS",
                     "Dr. Rodolfo Monte 848, Morón",
@@ -77,6 +84,7 @@ data class CentroResultado(
                     false
                 ),
                 CentroResultado(
+                    6,
                     "IOSFA Morón",
                     "Lunes a Viernes, 8HS - 20HS",
                     "Río Piedras 346, Morón",
@@ -87,6 +95,7 @@ data class CentroResultado(
                     true
                 ),
                 CentroResultado(
+                    7,
                     "Hospital Nacional Posadas",
                     "Abierto las 24HS",
                     "Presidente Illia s/n y Marconi, El Palomar",
@@ -97,6 +106,7 @@ data class CentroResultado(
                     false
                 ),
                 CentroResultado(
+                    8,
                     "Hospital Italiano",
                     "Lunes a Viernes, 8HS - 20HS",
                     "Av. Rivadavia 17955, Morón",

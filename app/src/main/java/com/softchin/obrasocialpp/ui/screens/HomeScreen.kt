@@ -21,6 +21,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.softchin.obrasocialpp.R
 import com.softchin.obrasocialpp.domain.CentroResultado
 import com.softchin.obrasocialpp.ui.components.CentroBusqueda
@@ -31,7 +33,10 @@ import com.softchin.obrasocialpp.ui.theme.displayFontFamily
 
 @Preview
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    navController: NavController = rememberNavController()
+) {
     val centros = CentroResultado.getMocks()
 
     Column(
@@ -62,7 +67,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(15.dp))
         LazyRow {
             items(centros) {
-                CentroHome(it)
+                CentroHome(it, navController = navController)
             }
         }
         Spacer(modifier = Modifier.height(10.dp))
@@ -76,7 +81,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         Spacer(modifier = Modifier.height(2.dp))
         LazyRow {
             items(centros.filter { it.coincideObraSocial }) {
-                CentroHome(it, false)
+                CentroHome(it, false, navController = navController)
             }
         }
     }

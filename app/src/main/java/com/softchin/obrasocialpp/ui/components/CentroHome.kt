@@ -2,6 +2,7 @@ package com.softchin.obrasocialpp.ui.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -26,6 +27,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil3.compose.AsyncImage
 import com.softchin.obrasocialpp.R
 import com.softchin.obrasocialpp.domain.CentroResultado
@@ -35,14 +38,18 @@ import com.softchin.obrasocialpp.utils.StringUtils
 
 @Preview(showBackground = true)
 @Composable
-fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto: Boolean = true) {
+fun CentroHome(
+    centro: CentroResultado = CentroResultado.getMock(),
+    mostrarFoto: Boolean = true,
+    navController: NavController = rememberNavController()
+) {
     val obrasSociales = StringUtils.getObrasSociales(centro.obrasSociales)
     var modifier = Modifier.padding(5.dp)
 
     if (centro.coincideObraSocial)
         modifier = modifier.border(
             5.dp,
-            /*Color(144, 179, 64)*/MaterialTheme.colorScheme.primaryContainer,
+            MaterialTheme.colorScheme.primaryContainer,
             RoundedCornerShape(10.dp)
         )
 
@@ -53,14 +60,19 @@ fun CentroHome(centro: CentroResultado = CentroResultado.getMock(), mostrarFoto:
                 containerColor = MaterialTheme.colorScheme.surfaceContainer,
                 contentColor = MaterialTheme.colorScheme.onSurfaceVariant
             ),
-            modifier = modifier
+            modifier = modifier.clickable {
+                navController.navigate(
+                    "${Screen.DetailsScreen.route}/${centro.id}"
+                )
+            }
         ) {
             Column(Modifier.padding(10.dp)) {
                 Text(
                     text = centro.nombre,
                     fontSize = 30.sp,
                     modifier = Modifier
-                        .fillMaxWidth().align(Alignment.CenterHorizontally),
+                        .fillMaxWidth()
+                        .align(Alignment.CenterHorizontally),
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.onSecondaryContainer,
                     fontFamily = MaterialTheme.typography.displayMedium.fontFamily
