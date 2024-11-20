@@ -3,7 +3,7 @@ package com.softchin.obrasocialpp.domain
 data class Usuario(
     val nombre: String,
     val apellido: String,
-    val email: String,
+    var email: String,
     val password: String,
     val telefono: String,
     val provincia: String,

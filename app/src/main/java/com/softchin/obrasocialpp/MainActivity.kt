@@ -3,8 +3,6 @@ package com.softchin.obrasocialpp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
@@ -48,7 +46,9 @@ class MainActivity : ComponentActivity() {
                 )
             }
 
-            composable<Screen.RegisterScreen>(enterTransition = { slideInHorizontally()}) {
+            composable<Screen.RegisterScreen>(
+                enterTransition = { slideInHorizontally() },
+                exitTransition = { slideOutHorizontally() }) {
                 RegisterScreen(navController = navController)
             }
 

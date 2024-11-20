@@ -122,7 +122,7 @@ fun RegisterScreen(modifier: Modifier = Modifier, navController: NavController) 
                 label = "Clave",
                 visualTransformation = if (!touchViewPassword) PasswordVisualTransformation() else VisualTransformation.None,
                 onTouchIcon = { touchViewPassword = !touchViewPassword },
-                drawableId = if (!touchViewPassword) R.drawable.visibilty else R.drawable.visibility_off
+                drawableId = if (!touchViewPassword) R.drawable.visibility_off else R.drawable.visibilty
             )
 
             var phone by remember { mutableStateOf("") }

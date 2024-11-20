@@ -25,6 +25,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.softchin.obrasocialpp.R
@@ -66,13 +68,21 @@ fun LoginScreen(
             iconDescription = "Ícono de email"
         )
 
+
+        var viewPassword by remember { mutableStateOf(false) }
+
         CustomTextField(
             modifier = Modifier.padding(vertical = 12.dp),
             text = passwordInput,
             onTextChange = { newText -> passwordInput = newText },
             placeHolderText = "Clave",
             icon = Icons.Default.Lock,
-            iconDescription = "Ícono de clave"
+            iconDescription = "Ícono de clave",
+            trailingIcon = if (viewPassword) R.drawable.visibilty else R.drawable.visibility_off,
+            visualTransformation = if (viewPassword) VisualTransformation.None else PasswordVisualTransformation(),
+            onClickViewPassword = {
+                viewPassword = !viewPassword
+            }
         )
 
         Button(
